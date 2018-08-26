@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+
+{% block style_block %}
+    {{block.super}}
+    <!-- Propeller date time picker css-->
+    <link rel="stylesheet" type="text/css" href="/ParadiseApp/static/components/datetimepicker/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/ParadiseApp/static/components/datetimepicker/css/pmd-datetimepicker.css" />
+{% endblock %}
+
+
+
+{% block block_title %}
+    Наряды на смену
+{% endblock %}
+
+{% block block_breadcrumb %}Наряд{% endblock %}
+
+{% block block_content %}
+
+    <button data-target="#form-dialog" data-toggle="modal" class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger pull-right" type="button"><i class="material-icons pmd-sm">add</i></button>
+    <div tabindex="-1" class="modal fade" id="form-dialog" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bordered">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h2 class="pmd-card-title-text">Добавить наряд</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-floating-label-completed">
+								<label for="regular1" class="control-label">Select Date and Time</label>
+								<input type="text" id="datetimepicker3" class="form-control">
+                                <span class="pmd-textfield-focused"></span>
+							</div>
+                        </div>
+
+                        <div class="pmd-modal-action">
+                            <button class="btn pmd-ripple-effect btn-primary" type="submit">Создать</button>
+                            <button data-dismiss="modal"  class="btn pmd-ripple-effect btn-default" type="button">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="plan">
+        <div class="section-inner">
+            <div class="row">
+                <div class="tab-content">
+                    {% for plan in plans %}
+                        <li class="list-group-item unread">
+                            <a href="{% url 'plan' plan_id=plan.id %}">
+                                <div class="media-left user-details">
+                                    {{ plan.id }}
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block script_block %}
+    {{block.super}}
+    <script type="text/javascript" language="javascript" src="/ParadiseApp/static/components/datetimepicker/js/moment-with-locales.js"></script>
+    <script type="text/javascript" language="javascript" src="/ParadiseApp/static/components/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker3').datetimepicker({
+                format: 'LT'
+            });
+        });
+    </script>
+{% endblock %}

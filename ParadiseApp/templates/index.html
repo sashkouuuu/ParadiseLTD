@@ -9,6 +9,8 @@
 <title>Admin - Material Design Responsive Dashboard Template Preview - Propeller</title>
 <meta name="description" content="Admin is a material design and bootstrap based responsive dashboard template created mainly for admin and backend applications."/>
 
+{% block style_block %}
+{{block.super}}
 <link rel="shortcut icon" type="image/x-icon" href="/ParadiseApp/static/themes/images/favicon.ico">
 
 <!-- Google icon -->
@@ -22,16 +24,12 @@
 <link rel="stylesheet" type="text/css" href="/ParadiseApp/static/assets/css/propeller.min.css">
 <!-- /build -->
 
-<!-- Propeller date time picker css-->
-<link rel="stylesheet" type="text/css" href="/ParadiseApp/static/components/datetimepicker/css/bootstrap-datetimepicker.css" />
-<link rel="stylesheet" type="text/css" href="/ParadiseApp/static/components/datetimepicker/css/pmd-datetimepicker.css" />
-
 <!-- Propeller theme css-->
 <link rel="stylesheet" type="text/css" href="/ParadiseApp/static/themes/css/propeller-theme.css" />
 
 <!-- Propeller admin theme css-->
 <link rel="stylesheet" type="text/css" href="/ParadiseApp/static/themes/css/propeller-admin.css">
-
+{% endblock %}
 </head>
 
 <body>
@@ -43,8 +41,8 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<a href="javascript:void(0);" data-target="basicSidebar" data-placement="left" data-position="slidepush" is-open="true" is-open-width="1200" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle"><i class="material-icons md-light">menu</i></a>	
-		  <a href="index.html" class="navbar-brand">
-
+		  <a href="{% url 'overview' %}" class="navbar-brand" style="padding-top: 0px; padding-bottom: 0px; padding-left: 0px;">
+            <img style="height:64px;" src="data:image/jpeg;base64,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">
 		  </a>
 		</div>
 	</div>
@@ -58,8 +56,16 @@
 <!-- Left sidebar -->
 <aside id="basicSidebar" class="pmd-sidebar  sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons" role="navigation">
 	<ul class="nav pmd-sidebar-nav">
+
         <li>
-			<a class="pmd-ripple-effect" href="{% url 'create_roll' %}">
+			<a class="pmd-ripple-effect" href="{% url 'overview' %}">
+				<i class="material-icons media-left media-middle md-light">dashboard</i>
+				<span class="media-body">Oбщее</span>
+			</a>
+		</li>
+
+        <li>
+			<a class="pmd-ripple-effect"  href="{% url 'plans' %}">
 				<i class="material-icons media-left media-middle md-light">apps</i>
 				<span class="media-body">Наряд</span>
 			</a>
@@ -76,12 +82,19 @@
 <!-- Sidebar Ends -->  
 	
 <!--content area start-->
-<div id="content" class="pmd-content content-area dashboard">
+<div id="content" class="pmd-content content-area">
 
 	<div class="container-fluid">
-    {% block block_content %}{% endblock %}
+        <h1 class="section-title" id="services">
+			{% block block_title %}{% endblock %}
+		</h1>
 
+        <ol class="breadcrumb text-left">
+		  <li><a href="{% url 'overview' %}">Общее</a></li>
+		  <li class="active">{% block block_breadcrumb %}{% endblock %}</li>
+		</ol>
 
+        {% block block_content %}{% endblock %}
 	</div>
 </div>
 
@@ -102,332 +115,303 @@
 </footer>
 <!--footer end-->
 <!-- Footer Ends -->
+{% block script_block %}
+    {{block.super}}
+    <!-- Scripts Starts -->
+    <script src="/ParadiseApp/static/assets/js/jquery-1.12.2.min.js"></script>
+    <script src="/ParadiseApp/static/assets/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var sPath=window.location.pathname;
+            var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+            $(".pmd-sidebar-nav").each(function(){
+                $(this).find("a[href='"+sPage+"']").parents(".dropdown").addClass("open");
+                $(this).find("a[href='"+sPage+"']").parents(".dropdown").find('.dropdown-menu').css("display", "block");
+                $(this).find("a[href='"+sPage+"']").parents(".dropdown").find('a.dropdown-toggle').addClass("active");
+                $(this).find("a[href='"+sPage+"']").addClass("active");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+    (function() {
+      "use strict";
+      var toggles = document.querySelectorAll(".c-hamburger");
+      for (var i = toggles.length - 1; i >= 0; i--) {
+        var toggle = toggles[i];
+        toggleHandler(toggle);
+      };
+      function toggleHandler(toggle) {
+        toggle.addEventListener( "click", function(e) {
+          e.preventDefault();
+          (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
+        });
+      }
 
-<!-- Scripts Starts -->
-<script src="/ParadiseApp/static/assets/js/jquery-1.12.2.min.js"></script>
-<script src="/ParadiseApp/static/assets/js/bootstrap.min.js"></script>
-<script>
-	$(document).ready(function() {
-		var sPath=window.location.pathname;
-		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
-		$(".pmd-sidebar-nav").each(function(){
-			$(this).find("a[href='"+sPage+"']").parents(".dropdown").addClass("open");
-			$(this).find("a[href='"+sPage+"']").parents(".dropdown").find('.dropdown-menu').css("display", "block");
-			$(this).find("a[href='"+sPage+"']").parents(".dropdown").find('a.dropdown-toggle').addClass("active");
-			$(this).find("a[href='"+sPage+"']").addClass("active");
-		});
-	});
-</script>
-<script type="text/javascript">
-(function() {
-  "use strict";
-  var toggles = document.querySelectorAll(".c-hamburger");
-  for (var i = toggles.length - 1; i >= 0; i--) {
-    var toggle = toggles[i];
-    toggleHandler(toggle);
-  };
-  function toggleHandler(toggle) {
-    toggle.addEventListener( "click", function(e) {
-      e.preventDefault();
-      (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
-    });
-  }
+    })();
+    </script>
 
-})();
-</script>
+    <script src="/ParadiseApp/static/assets/js/propeller.min.js"></script>
 
-<script src="/ParadiseApp/static/assets/js/propeller.min.js"></script>
+    <!-- Javascript for revenue progressbar animation effect-->
+    <script>
+        function progress(percent, $element) {
+            var progressBarWidth = percent * $element.width() / 100;
+            $element.find('.progress-bar').animate({ width: progressBarWidth }, 500);
+        }
 
-<!-- Javascript for revenue progressbar animation effect-->
-<script>
-	function progress(percent, $element) {
-		var progressBarWidth = percent * $element.width() / 100;
-		$element.find('.progress-bar').animate({ width: progressBarWidth }, 500);
-	} 
-	
-	progress(50, $('.cash-progressbar'));
-	progress(30, $('.card-progressbar'));
-	progress(60, $('.wallet-progressbar'));
-	progress(40, $('.credit-progressbar'));
-	progress(10, $('.other-progressbar'));
-</script>
-<!-- Javascript for revenue progressbar animation effect-->	
+        progress(50, $('.cash-progressbar'));
+        progress(30, $('.card-progressbar'));
+        progress(60, $('.wallet-progressbar'));
+        progress(40, $('.credit-progressbar'));
+        progress(10, $('.other-progressbar'));
+    </script>
+    <!-- Javascript for revenue progressbar animation effect-->
 
 
-<!--circle chart-->
-<script src="/ParadiseApp/static/themes/js/circles.min.js"></script>
-<script>
-  <!-- javascript for total sales chart-->
-		var colors = [
-			['#dfe3e7', '#f79332'], ['#dfe3e7', '#f79332'], ['#dfe3e7', '#f79332'], ['#dfe3e7', '#2ab7ee'], ['#dfe3e7', '#00719d']
-		], circles = [];
-		for (var i = 1; i <= 3; i++) {
-			var child = document.getElementById('circles-' + i),
-				percentage = 10 + (i * 8);
 
-			circles.push(Circles.create({
-				id:         child.id,
-				value:		percentage,
-				radius:     50,
-				width:      7,
-				colors:     colors[i - 1],
- 				textClass:           'circles-text',
-  				styleText:           true
-			}));
-		}
-  <!-- javascript for total sales chart-->
-	</script>
+    <!--staked column chart for payment-->
+    <script src="/ParadiseApp/static/themes/js/highcharts.js"></script>
+    <script src="/ParadiseApp/static/themes/js/highcharts-more.js"></script>
 
-<!--staked column chart for payment-->
-<script src="/ParadiseApp/static/themes/js/highcharts.js"></script>
-<script src="/ParadiseApp/static/themes/js/highcharts-more.js"></script>
-
-<!-- Payment chart js-->
-<script>
-$(function paymentChart(){
-    $('#payment-chart').highcharts({
-        chart: {
-            type: 'column'
-        },
-		colors: "#00719d,#2ab7ee".split(","),
-        title: {
-            text: 'Last 10 days comparison',
-			style: {
-                color: "#4d575d",
-                fontSize: "14px",
+    <!-- Payment chart js-->
+    <script>
+    $(function paymentChart(){
+        $('#payment-chart').highcharts({
+            chart: {
+                type: 'column'
             },
-        },
-        xAxis: {
-            categories: ['9-7', '10-7', '11-7', '12-7', '13-7', '14-7', '15-7', '16-7', '17-7', '18-7']
-        },
-        yAxis: {
-            min: 0,
-			title: {
-					text: "Amount"
-			},
-			stackLabels: {
-					enabled: false,
-					style: {
-						fontWeight: 'bold',
-						color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-					}
-				}
-			},
-        legend: {
-            enabled: !0,
-            align: "right",
-            layout: "horizontal",
-            labelFormatter: function() {
-                return this.name
-            },
-            borderColor: false,
-            borderRadius: 0,
-            navigation: {
-                activeColor: "#274b6d",
-                inactiveColor: "#CCC"
-            },
-            shadow: false,
-            itemStyle: {
-                color: "#888888",
-                fontSize: "12px",
-                fontWeight: "normal"
-            },
-            itemHoverStyle: {
-                color: "#000"
-            },
-            itemHiddenStyle: {
-                color: "#CCC"
-            },
-            itemCheckboxStyle: {
-                position: "absolute"
-            },
-			symbolHeight: 10,
-			symbolWidth: 10,
-            symbolPadding: 5,
-            verticalAlign: "bottom",
-            x: 0,
-            y: 0,
+            colors: "#00719d,#2ab7ee".split(","),
             title: {
+                text: 'Last 10 days comparison',
                 style: {
+                    color: "#4d575d",
+                    fontSize: "14px",
+                },
+            },
+            xAxis: {
+                categories: ['9-7', '10-7', '11-7', '12-7', '13-7', '14-7', '15-7', '16-7', '17-7', '18-7']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                        text: "Amount"
+                },
+                stackLabels: {
+                        enabled: false,
+                        style: {
+                            fontWeight: 'bold',
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                        }
+                    }
+                },
+            legend: {
+                enabled: !0,
+                align: "right",
+                layout: "horizontal",
+                labelFormatter: function() {
+                    return this.name
+                },
+                borderColor: false,
+                borderRadius: 0,
+                navigation: {
+                    activeColor: "#274b6d",
+                    inactiveColor: "#CCC"
+                },
+                shadow: false,
+                itemStyle: {
+                    color: "#888888",
+                    fontSize: "12px",
                     fontWeight: "normal"
-                }
-            }
-        },
-        tooltip: {
-            headerFormat: '<b>{point.x}</b><br/>',
-            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}',
-			backgroundColor: '#ffffff',
-			borderColor: '#f0f0f0',
-			shadow: true
-        },
-        plotOptions: {
-            column: {
-                stacking: 'normal',
-                dataLabels: {
-                    enabled: false,
-                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                },
+                itemHoverStyle: {
+                    color: "#000"
+                },
+                itemHiddenStyle: {
+                    color: "#CCC"
+                },
+                itemCheckboxStyle: {
+                    position: "absolute"
+                },
+                symbolHeight: 10,
+                symbolWidth: 10,
+                symbolPadding: 5,
+                verticalAlign: "bottom",
+                x: 0,
+                y: 0,
+                title: {
                     style: {
-                        textShadow: '0 0 3px black'
+                        fontWeight: "normal"
                     }
                 }
-            }
-        },
-		 credits: {
-            enabled: false,
-        },
-        series: [{
-            name: 'Card',
-            data: [25000, 50000, 75000, 75000, 60000, 70000, 10000, 2500, 5000, 25000]
-        }, {
-            name: 'Wallet',
-            data: [75000, 50000, 25000, 25000, 30000, 30000, 90000, 25000, 3000, 50000]
-        }]
-		
-    });
-});
-</script>
+            },
+            tooltip: {
+                headerFormat: '<b>{point.x}</b><br/>',
+                pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}',
+                backgroundColor: '#ffffff',
+                borderColor: '#f0f0f0',
+                shadow: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                        style: {
+                            textShadow: '0 0 3px black'
+                        }
+                    }
+                }
+            },
+             credits: {
+                enabled: false,
+            },
+            series: [{
+                name: 'Card',
+                data: [25000, 50000, 75000, 75000, 60000, 70000, 10000, 2500, 5000, 25000]
+            }, {
+                name: 'Wallet',
+                data: [75000, 50000, 25000, 25000, 30000, 30000, 90000, 25000, 3000, 50000]
+            }]
 
-<!--staked column chart for sms details-->
-<script>
-$( function smsChart() { 
-    $('#sms-chart').highcharts({
-        chart: {
-            zoomType: 'none'
-        },
-		colors: "#e75c5c,#9159b8".split(","),
-         title: {
-            text: 'Last 7 days comparison',
-			style: {
-                color: "#4d575d",
-                fontSize: "14px",
+        });
+    });
+    </script>
+
+    <!--staked column chart for sms details-->
+    <script>
+    $( function smsChart() {
+        $('#sms-chart').highcharts({
+            chart: {
+                zoomType: 'none'
             },
-        },
-        xAxis: [{
-            categories: ['3-7', '4-7', '5-7', '6-7', '7-7', '8-7', '9-7']
-        }],
-        yAxis: [{ // Primary yAxis
-            labels: {
+            colors: "#e75c5c,#9159b8".split(","),
+             title: {
+                text: 'Last 7 days comparison',
                 style: {
-                    color: Highcharts.getOptions().colors[1]
+                    color: "#4d575d",
+                    fontSize: "14px",
+                },
+            },
+            xAxis: [{
+                categories: ['3-7', '4-7', '5-7', '6-7', '7-7', '8-7', '9-7']
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                title: {
+                    text: 'User Count',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
                 }
-            },
-            title: {
-                text: 'User Count',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            }
-        }, { // Secondary yAxis
-            title: {
-                text: 'Total Days',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
-            },
-            labels: {
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
-            },
-            opposite: true
-        }],
-		legend: {
-            enabled: !0,
-            align: "right",
-			layout: "horizontal",
-            labelFormatter: function() {
-                return this.name
-            },
-            borderColor: false,
-            borderRadius: 0,
-            navigation: {
-                activeColor: "#274b6d",
-                inactiveColor: "#CCC"
-            },
-            shadow: false,
-            itemStyle: {
-                color: "#888888",
-                fontSize: "12px",
-                fontWeight: "normal"
-            },
-            itemHoverStyle: {
-                color: "#000"
-            },
-            itemHiddenStyle: {
-                color: "#CCC"
-            },
-            itemCheckboxStyle: {
-                position: "absolute",
-                width: "12px",
-                height: "12px"
-            },
-			symbolHeight: 10,
-			symbolWidth: 10,
-            symbolPadding: 5,
-            verticalAlign: "bottom",
-            x: 0,
-            y: 0,
-            title: {
-                style: {
+            }, { // Secondary yAxis
+                title: {
+                    text: 'Total Days',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                labels: {
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                opposite: true
+            }],
+            legend: {
+                enabled: !0,
+                align: "right",
+                layout: "horizontal",
+                labelFormatter: function() {
+                    return this.name
+                },
+                borderColor: false,
+                borderRadius: 0,
+                navigation: {
+                    activeColor: "#274b6d",
+                    inactiveColor: "#CCC"
+                },
+                shadow: false,
+                itemStyle: {
+                    color: "#888888",
+                    fontSize: "12px",
                     fontWeight: "normal"
+                },
+                itemHoverStyle: {
+                    color: "#000"
+                },
+                itemHiddenStyle: {
+                    color: "#CCC"
+                },
+                itemCheckboxStyle: {
+                    position: "absolute",
+                    width: "12px",
+                    height: "12px"
+                },
+                symbolHeight: 10,
+                symbolWidth: 10,
+                symbolPadding: 5,
+                verticalAlign: "bottom",
+                x: 0,
+                y: 0,
+                title: {
+                    style: {
+                        fontWeight: "normal"
+                    }
                 }
-            }
-        },
+            },
 
-        tooltip: {
-            shared: true,
-			backgroundColor: '#ffffff',
-			borderColor: '#f0f0f0',
-			shadow: true
-        },
-		 credits: {
-            enabled: false,
-        },
+            tooltip: {
+                shared: true,
+                backgroundColor: '#ffffff',
+                borderColor: '#f0f0f0',
+                shadow: true
+            },
+             credits: {
+                enabled: false,
+            },
 
-        series: [{
-            name: 'Total Days',
-            type: 'spline',
-            yAxis: 1,
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6],
-            tooltip: {
-                pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: '
-            }
-        }, {
-            name: 'Total Days error',
-            type: 'errorbar',
-            yAxis: 1,
-            data: [[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143]],
-            tooltip: {
-                pointFormat: '(error range: {point.low}-{point.high})<br/>'
-            }
-        }, {
-            name: 'User Count',
-            type: 'column',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2],
-            tooltip: {
-                pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: <b>{point.y:.1f}</b> '
-            }
-        }, {
-            name: 'User Count error',
-            type: 'errorbar',
-            data: [[6, 8], [5.9, 7.6], [9.4, 10.4], [14.1, 15.9], [18.0, 20.1], [21.0, 24.0], [23.2, 25.3]],
-            tooltip: {
-                pointFormat: '(error range: {point.low}-{point.high})<br/>'
-            }
-        }]
+            series: [{
+                name: 'Total Days',
+                type: 'spline',
+                yAxis: 1,
+                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6],
+                tooltip: {
+                    pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: '
+                }
+            }, {
+                name: 'Total Days error',
+                type: 'errorbar',
+                yAxis: 1,
+                data: [[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143]],
+                tooltip: {
+                    pointFormat: '(error range: {point.low}-{point.high})<br/>'
+                }
+            }, {
+                name: 'User Count',
+                type: 'column',
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2],
+                tooltip: {
+                    pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: <b>{point.y:.1f}</b> '
+                }
+            }, {
+                name: 'User Count error',
+                type: 'errorbar',
+                data: [[6, 8], [5.9, 7.6], [9.4, 10.4], [14.1, 15.9], [18.0, 20.1], [21.0, 24.0], [23.2, 25.3]],
+                tooltip: {
+                    pointFormat: '(error range: {point.low}-{point.high})<br/>'
+                }
+            }]
+        });
     });
-});
-</script>
-<!-- Scripts Ends -->
-<!-- Javascript for Datepicker -->
-<script type="text/javascript" language="javascript" src="/ParadiseApp/static/components/datetimepicker/js/moment-with-locales.js"></script>
-<script type="text/javascript" language="javascript" src=/ParadiseApp/static/components/datetimepicker/js/bootstrap-datetimepicker.js"></script>
-<script>
-	// Linked date and time picker 
-	// start date date and time picker 
-	$('#datepicker-default').datetimepicker();
-	$(".auto-update-year").html(new Date().getFullYear());
-</script> 
+    </script>
+    <!-- Scripts Ends -->
+    <!-- Javascript for Datepicker -->
 
+{% endblock %}
 </body>
 </html>
