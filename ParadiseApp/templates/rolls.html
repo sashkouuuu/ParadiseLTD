@@ -26,6 +26,16 @@
                         </div>
 
                         <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <label for="{{ form.size.id_for_label }}">{{ form.batch.label }}</label>
+                            {{ form.batch  }}
+                        </div>
+
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <label for="{{ form.size.id_for_label }}">{{ form.number.label }}</label>
+                            {{ form.number  }}
+                        </div>
+
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
                             <label for="{{ form.size.id_for_label }}">{{ form.size.label }}</label>
                             {{ form.size  }}
                         </div>
@@ -63,6 +73,8 @@
         <thead>
             <tr>
                 <th>Производитель</th>
+                <th>Партия</th>
+                <th>Номер рулона</th>
                 <th>Размер</th>
                 <th>Покрытие</th>
                 <th>Твердость</th>
@@ -76,6 +88,18 @@
             {% for roll in rolls %}
                 <tr>
                     <td>{{roll.producer}}</td>
+                    {% if roll.batch == None %}
+                        <td>---</td>
+                    {% else %}
+                        <td>{{roll.batch}}</td>
+                    {% endif %}
+
+                    {% if roll.batch == None %}
+                        <td>---</td>
+                    {% else %}
+                        <td>{{roll.number}}</td>
+                    {% endif %}
+
                     <td>{{roll.size}}</td>
                     <td>{{roll.coating}}</td>
                     <td>{{roll.hardness}}</td>
@@ -83,6 +107,7 @@
                     <td>{{roll.gross}}</td>
                     <td>{{roll.defective}}</td>
                     <td>
+                        <a href="{% url 'process' roll_id=roll.id %}" class="btn pmd-btn-outline pmd-ripple-effect btn-process btn-sm">Процесс</a>
                         <a href="{% url 'delete_roll' roll_id=roll.id %}" class="btn pmd-btn-outline pmd-ripple-effect btn-danger btn-sm">Удалить</a>
                     </td>
                 </tr>
